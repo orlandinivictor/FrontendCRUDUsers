@@ -4,7 +4,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-// import Users from '../components/Users';
 import api from '../services/api';
 import { UsersContainer } from './indexstyles';
 

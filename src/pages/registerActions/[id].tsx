@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, createRef } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -6,7 +7,7 @@ import NotificationSystem from 'react-notification-system';
 import api from '../../services/api';
 import isValidCpf from '../../utils/isValidCpf';
 
-import { Form, RegisterContainer } from './styles';
+import { Form, RegisterContainer } from '../../styles/registerActions/styles';
 
 type User = {
   _id: string;
@@ -23,7 +24,7 @@ type UserProps = {
 };
 
 export default function registerActions({ data }: UserProps) {
-  const notificationSystem = createRef();
+  const notificationSystem = createRef<any>();
   const [name, setName] = useState(data.name || '');
   const [age, setAge] = useState(data.age || '');
   const [marital, setMarital] = useState(data.marital || '');
@@ -64,14 +65,11 @@ export default function registerActions({ data }: UserProps) {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    const notification = notificationSystem.current;
+    const notification: any = notificationSystem.current;
 
     try {
       await api.get(`/delete/${data._id}`);
-      notification.addNotification({
-        message: 'Usuário deletado com sucesso',
-        level: 'success',
-      });
+      notification.addNotification();
     } catch (err) {
       notification.addNotification({
         message: 'Erro no servidor',
@@ -83,7 +81,7 @@ export default function registerActions({ data }: UserProps) {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const notification = notificationSystem.current;
+    const notification: any = notificationSystem.current;
 
     const user = {
       name,
@@ -125,7 +123,7 @@ export default function registerActions({ data }: UserProps) {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    const notification = notificationSystem.current;
+    const notification: any = notificationSystem.current;
 
     const user = {
       name,
@@ -167,7 +165,7 @@ export default function registerActions({ data }: UserProps) {
 
   return (
     <RegisterContainer>
-      <NotificationSystem ref={notificationSystem} autoDismiss={3} />
+      <NotificationSystem ref={notificationSystem} />
       <div>
         <h2>Informações Pessoais</h2>
         <span>Adicione aqui as informações da nova pessoa.</span>

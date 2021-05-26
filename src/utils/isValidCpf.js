@@ -24,7 +24,7 @@ isValidCpf.prototype.createDigit = function (partialCpf) {
   const cpfArray = Array.from(partialCpf);
 
   let regressive = cpfArray.length + 1;
-  const total = cpfArray.reduce((ac, val: number) => {
+  const total = cpfArray.reduce((ac, val) => {
     ac = ac + regressive * Number(val);
     regressive--;
     return ac;

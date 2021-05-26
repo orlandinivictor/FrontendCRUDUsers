@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import api from '../services/api';
-import { UsersContainer } from './indexstyles';
+import { UsersContainer } from '../styles/index/indexstyles';
 
 type User = {
   _id: string;

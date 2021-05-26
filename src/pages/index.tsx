@@ -134,5 +134,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       users: data,
     },
+    revalidate: 10,
   };
 };

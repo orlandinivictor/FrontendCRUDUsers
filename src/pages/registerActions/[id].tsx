@@ -315,8 +315,13 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   let data;
 
   if (id !== 'new') {
-    const UserData = await api.get(`/user/${id}`);
-    data = UserData.data;
+    try {
+      const UserData = await api.get(`/user/${id}`);
+      data = UserData.data;
+    } catch (err) {
+      console.log(err);
+      data = {};
+    }
   } else {
     data = {};
   }

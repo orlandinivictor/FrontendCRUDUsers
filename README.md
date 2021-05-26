@@ -1,4 +1,4 @@
-### Consumo de uma api para cadastro de usuários
+# Consumo de uma api para cadastro de usuários
 
 ## Tecnologias utilizadas:
 - ReactJS
@@ -6,7 +6,7 @@
 - StyledComponents
 - Axios
 
-# Para executar, não esqueçam de instalar os pacotes
+### Para executar, não esqueçam de instalar os pacotes
 Use:
   - yarn
   ou
